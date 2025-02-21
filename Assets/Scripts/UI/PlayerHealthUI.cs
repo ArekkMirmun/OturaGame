@@ -15,7 +15,9 @@ namespace UI
         private Vector2 initialPosition;
         private void Start()
         {
-            initialPosition = healthbarRectTransform.anchoredPosition;
+            initialPosition = new Vector2(
+                healthbarRectTransform.anchoredPosition.x - healthbarRectTransform.sizeDelta.x/2,
+                healthbarRectTransform.anchoredPosition.y);
         }
 
         // Updates the max health in the slider, and resizes and repositions the health bar,
