@@ -149,7 +149,7 @@ public class Player : MonoBehaviour
 
     
     // Check if the player is on the ground
-    private bool CheckForGround()
+    public bool CheckForGround()
     {
         RaycastHit hit;
         return Physics.Raycast(groundCheck.position, Vector3.down, out hit, 0.3f);

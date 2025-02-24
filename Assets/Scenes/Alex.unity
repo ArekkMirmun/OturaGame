@@ -419,7 +419,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9036274473826497804, guid: 52f940304f99ddc40a5cd204ae1c04f2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 9036274473826497804, guid: 52f940304f99ddc40a5cd204ae1c04f2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1496,6 +1496,7 @@ MonoBehaviour:
   - {fileID: 441932815}
   player: {fileID: 2055093945}
   batParticles: {fileID: 19800000, guid: 24b9091eef9f6704fac0f565bda98856, type: 3}
+  batSpeed: 20
 --- !u!1 &2111750769
 GameObject:
   m_ObjectHideFlags: 0
@@ -1617,7 +1618,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5799848290022161610, guid: ce24cccd7b668924a8c3ecf41a44ef65, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.11080694
+      value: 0.433
       objectReference: {fileID: 0}
     - target: {fileID: 5799848290022161610, guid: ce24cccd7b668924a8c3ecf41a44ef65, type: 3}
       propertyPath: m_LocalPosition.z

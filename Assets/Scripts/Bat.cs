@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -18,33 +19,33 @@ public class Bat : MonoBehaviour
     [SerializeField]private float batSpeed = 20f;
 
     private float baseSpeed;
+    private Rigidbody rb;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         baseSpeed = player.speed;
+        rb = player.GetComponent<Rigidbody>();
         SetBat();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (batActive && player.CheckForGround())
+        {
+            batActive = false;
+            SetBat();
+        }
     }
 
     private void OnBat(InputValue value)
     {
-        batActive = !batActive;
-        SetBat();
-        if (batActive)
+        if (!batActive && !player.CheckForGround() || batActive)
         {
-            player.speed = batSpeed;
+            batActive = !batActive;
+            SetBat();
         }
-        else
-        {
-            player.speed = baseSpeed;
-        }
-        ParticleSystem batObject = Instantiate(batParticles, this.batObject.transform.position, Quaternion.identity);
-        Destroy(batObject, 1f);
+
     }
 
     //Set the bat and player body when transforming
@@ -58,5 +59,23 @@ public class Bat : MonoBehaviour
         {
             meshRenderer.enabled = !batActive;
         }
+        
+        if (batActive)
+        {
+            player.speed = batSpeed;
+            rb.useGravity = false;
+        }
+        else
+        {
+            player.speed = baseSpeed;
+            rb.useGravity = true;
+        }
+        ParticleSystem batParticle = Instantiate(batParticles, this.batObject.transform.position, Quaternion.identity);
+        StartCoroutine(StopParticleEffect(batParticle,0.5f));
+    }
+    IEnumerator StopParticleEffect(ParticleSystem p, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        p.Stop();
     }
 }
