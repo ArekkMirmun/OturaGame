@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     public static Player Instance;
     private static readonly int Velocity = Animator.StringToHash("velocity");
     [SerializeField] private Rigidbody rb;
-    [SerializeField] private float speed = 5f;
+    public float speed = 5f;
     [SerializeField] private float jumpForce = 5f;
     [SerializeField] private float sensitivity = 2f;
     [SerializeField] private float sprintMultiplier = 1.4f;
