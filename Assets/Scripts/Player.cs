@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     public static Player Instance;
     private static readonly int Velocity = Animator.StringToHash("velocity");
     [SerializeField] private Rigidbody rb;
-    [SerializeField] private float speed = 5f;
+    public float speed = 5f;
     [SerializeField] private float jumpForce = 5f;
     [SerializeField] private float sensitivity = 2f;
     [SerializeField] private float sprintMultiplier = 1.4f;
@@ -149,7 +149,7 @@ public class Player : MonoBehaviour
 
     
     // Check if the player is on the ground
-    private bool CheckForGround()
+    public bool CheckForGround()
     {
         RaycastHit hit;
         return Physics.Raycast(groundCheck.position, Vector3.down, out hit, 0.3f);

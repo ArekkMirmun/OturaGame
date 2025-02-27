@@ -13,11 +13,12 @@ namespace UI
         [SerializeField] float widthPerHealthUnit = 10f;
     
         private Vector2 initialPosition;
-        private void Start()
+        private void Awake()
         {
             initialPosition = new Vector2(
                 healthbarRectTransform.anchoredPosition.x - healthbarRectTransform.sizeDelta.x/2,
                 healthbarRectTransform.anchoredPosition.y);
+            Debug.Log(initialPosition.ToString());
         }
 
         // Updates the max health in the slider, and resizes and repositions the health bar,
