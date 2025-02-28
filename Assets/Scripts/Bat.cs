@@ -4,16 +4,20 @@ using UnityEngine.InputSystem;
 
 public class Bat : MonoBehaviour
 {
+    [SerializeField]private Player player;
+    [Header("Player")]
     [SerializeField]private Camera playerCamera;
-
+    [SerializeField]private GameObject playerObject;
+    
+    [Header("Bat")]
     [SerializeField]private Camera batCamera;
     
     private bool batActive = false;
     
     [SerializeField]private GameObject batObject;
 
-    [SerializeField]private MeshRenderer[] playerRenderers;
-    [SerializeField]private Player player;
+    
+    
     
     [SerializeField]private ParticleSystem batParticles;
     [SerializeField]private float batSpeed = 20f;
@@ -55,10 +59,7 @@ public class Bat : MonoBehaviour
         batCamera.enabled = batActive;
         batObject.SetActive(batActive);
         batObject.SetActive(batActive);
-        foreach (MeshRenderer meshRenderer in playerRenderers)
-        {
-            meshRenderer.enabled = !batActive;
-        }
+        playerObject.SetActive(!batActive);
         
         if (batActive)
         {
