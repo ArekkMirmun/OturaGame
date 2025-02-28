@@ -153,6 +153,11 @@ public class Player : MonoBehaviour
             speed /= sprintMultiplier;
         }
     }
+
+    public void OnAttack(InputValue value)
+    {
+        animator.SetTrigger("Attack");
+    }
     
 
     
