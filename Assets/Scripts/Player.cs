@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     public static Player Instance;
+    [SerializeField] private Animator animator;
     private static readonly int Velocity = Animator.StringToHash("velocity");
     [SerializeField] private Rigidbody rb;
     public float speed = 5f;
@@ -65,13 +66,19 @@ public class Player : MonoBehaviour
         staminaSlider.value = currentStamina / maxStamina;
     
         // Apply movement velocity to the Rigidbody
-        Vector3 moveDirection = cam.transform.forward * velocity.z + cam.transform.right * velocity.x;
+        //Vector3 moveDirection = cam.transform.forward * velocity.z + cam.transform.right * velocity.x;
+        Vector3 moveDirection = transform.forward * velocity.z + transform.right * velocity.x;
         moveDirection.y = 0; // Keep movement on the horizontal plane
         rb.linearVelocity = moveDirection * speed + new Vector3(0, rb.linearVelocity.y, 0); // Maintain existing Y velocity (gravity)
     
-        /*// Update animator parameters with current speed
+        
+        // Update animator parameters with current speed
         float currentSpeed = rb.linearVelocity.magnitude;
-        animator.SetFloat(Velocity, currentSpeed);*/
+        animator.SetFloat(Velocity, currentSpeed);
+        animator.SetFloat("VelocityX",velocity.x);
+        animator.SetFloat("VelocityZ",velocity.z);
+        animator.SetBool("Run",isSprinting);
+        animator.SetBool("IsGrounded",CheckForGround());
 
         /*// Movement Sounds
         if (currentSpeed > 0.1f && CheckForGround()) // Si el jugador se está moviendo
@@ -115,6 +122,7 @@ public class Player : MonoBehaviour
     {
         if (!CheckForGround() || isFrozen) return;
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        animator.SetTrigger("Jump");
     }
 
     // Handle looking/turning
@@ -144,6 +152,11 @@ public class Player : MonoBehaviour
             isSprinting = false;
             speed /= sprintMultiplier;
         }
+    }
+
+    public void OnAttack(InputValue value)
+    {
+        animator.SetTrigger("Attack");
     }
     
 
