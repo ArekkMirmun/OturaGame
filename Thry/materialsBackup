@@ -215,6 +215,7 @@ ac17747624baf7144ab7d15fb3ba648d:=Universal Render Pipeline/Lit
 5edcc5f0f17ff8d4796bd30b5e988f80:=Universal Render Pipeline/Lit
 31321ba15b8f8eb4c954353edc038b1d:=Universal Render Pipeline/Lit
 f48d3967ac6fde24b9512957122269eb:=Universal Render Pipeline/Lit
+<<<<<<< Updated upstream
 a8f45802e9e8b0449a185772fd8c119d:=Universal Render Pipeline/Lit
 3db0a30c68ee2fd46b5bb09af3657023:=Universal Render Pipeline/Lit
 2cf22d19edc1ecf4e8fef80b6ae74431:=Universal Render Pipeline/Lit
@@ -266,3 +267,18 @@ dd66bfc8a0546f049ba2b41f85836078:=Universal Render Pipeline/Lit
 2c9c3fc6825d21e4796d5fe8ff0cfe12:=Universal Render Pipeline/Lit
 94c7177e522e20644905131747af12f5:=Universal Render Pipeline/Lit
 0251a0e81c07d184f90032efef3786d6:=Universal Render Pipeline/Lit
+=======
+4318bbd728853be4e8ad91603be72ab6:=Universal Render Pipeline/Lit
+970b7cfc4636dee4a9ea9e8f105bcd75:=Universal Render Pipeline/Lit
+f348d5fbc5b0a104f869f0ddb748f9a6:=Universal Render Pipeline/Lit
+82632962334fde448adce286360f7c2b:=Universal Render Pipeline/Lit
+4d81772bd3a114145ae9c7fd70eb48a7:=Universal Render Pipeline/Lit
+fdf40c0d2fabfa44a85f815f691d58f1:=Universal Render Pipeline/Lit
+e4d752681e28ab74e9a4728916f77cd2:=Universal Render Pipeline/Lit
+9eb05fbf99433a2418bbbe6718987c39:=Universal Render Pipeline/Lit
+464848aa8bf12f341be19f96af13f9b0:=Universal Render Pipeline/Lit
+85afdef5c1fe1d74181d3c35e10dbe3f:=Universal Render Pipeline/Lit
+b1f6802ab476c4b43a0d61432033ca89:=Universal Render Pipeline/Lit
+4f7f171adc5f6474d9fb3b0856f2ffbf:=Universal Render Pipeline/Lit
+f822f29d404e7784992311fd903d17df:=Universal Render Pipeline/Lit
+>>>>>>> Stashed changes
