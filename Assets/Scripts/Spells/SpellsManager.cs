@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class SpellsManager : MonoBehaviour
 {
-    private List<SkillBase> skills = new List<SkillBase>();
+    public List<SkillBase> skills = new List<SkillBase>();
 
     private void Start()
     {
