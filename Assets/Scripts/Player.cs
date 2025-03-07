@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
     private bool isSprinting = false;
     private Vector3 velocity;
     private float rotationY = 0f;
+    public bool isAiming = false;
     
     
     private void Awake()
@@ -107,6 +108,11 @@ public class Player : MonoBehaviour
         }*/
     }
 
+    public void OnAim(InputValue value)
+    {
+        isAiming = value.isPressed;
+        animator.SetBool("Aiming", isAiming);
+    }
 
     #region Movement
 
@@ -156,10 +162,13 @@ public class Player : MonoBehaviour
 
     public void OnAttack(InputValue value)
     {
-        animator.SetTrigger("Attack");
+        if (isAiming)
+        {
+            animator.SetTrigger("Shoot");
+        }else {
+            animator.SetTrigger("Attack");
+        }
     }
-    
-
     
     // Check if the player is on the ground
     public bool CheckForGround()
