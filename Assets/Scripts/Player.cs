@@ -109,10 +109,15 @@ public class Player : MonoBehaviour
     }
 
     public void OnAim(InputValue value)
+{
+    bool newIsAiming = value.isPressed;
+    if (newIsAiming != isAiming) // Solo cambiar si hay una diferencia
     {
-        isAiming = value.isPressed;
+        isAiming = newIsAiming;
         animator.SetBool("Aiming", isAiming);
     }
+}
+
 
     #region Movement
 
@@ -161,14 +166,17 @@ public class Player : MonoBehaviour
     }
 
     public void OnAttack(InputValue value)
+{
+    if (isAiming)
     {
-        if (isAiming)
-        {
-            animator.SetTrigger("Shoot");
-        }else {
-            animator.SetTrigger("Attack");
-        }
+        animator.Play("Shoot", 0, 0); // Reproducir desde el inicio
     }
+    else
+    {
+        animator.SetTrigger("Attack");
+    }
+}
+
     
     // Check if the player is on the ground
     public bool CheckForGround()

@@ -1084,7 +1084,7 @@ MonoBehaviour:
   damage: 5
   range: 5
   cooldown: 1
-  shootPoint: {fileID: 0}
+  shootPoint: {fileID: 1448605188}
   player: {fileID: 2125513516}
 --- !u!1001 &1176189103
 PrefabInstance:
@@ -1378,6 +1378,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 520377245}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1448605188 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1852576806548013000, guid: 97ac3a16e637e1a4384428ee96c79a34, type: 3}
+  m_PrefabInstance: {fileID: 799970299}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1514701999
 GameObject:
   m_ObjectHideFlags: 0
@@ -1965,7 +1970,7 @@ MonoBehaviour:
   activationKey: 49
   skillPrefab: {fileID: 2957549091228988056, guid: 03bc38a483e475041a0bb2a49920cb12, type: 3}
   previewPrefab: {fileID: 767257442641624078, guid: 26945e30f667f714ca8667298fe278fc, type: 3}
-  previewRadius: 2
+  previewRadius: 1
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
