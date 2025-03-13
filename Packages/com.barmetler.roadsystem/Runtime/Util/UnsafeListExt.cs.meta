@@ -1,0 +1,10 @@
+﻿fileFormatVersion: 2
+guid: 03fad9c5a7574941bbaec9f200dc1c34
+timeCreated: 1724274141
+AssetOrigin:
+  serializedVersion: 1
+  productId: 192818
+  packageName: Road System
+  packageVersion: 2.0.1
+  assetPath: Packages/com.barmetler.roadsystem/Runtime/Util/UnsafeListExt.cs
+  uploadId: 734011
