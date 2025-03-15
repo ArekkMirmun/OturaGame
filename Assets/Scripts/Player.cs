@@ -22,6 +22,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float currentStamina = 100;
     [SerializeField] private float maxStamina = 100;
     
+    public ChurchDoor churchDoor;
+    
     private bool isSprinting = false;
     private Vector3 velocity;
     private float rotationY = 0f;
@@ -112,6 +114,14 @@ public class Player : MonoBehaviour
     {
         isAiming = value.isPressed;
         animator.SetBool("Aiming", isAiming);
+    }
+    
+    public void OnInteract()
+    {
+        if (churchDoor != null)
+        {
+            churchDoor.Interact();
+        }
     }
 
     #region Movement
