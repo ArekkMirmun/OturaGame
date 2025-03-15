@@ -72,7 +72,7 @@ public class AttackState : EnemyState
     public override void Enter()
     {
         enemy.Agent.isStopped = true;
-        enemy.Attack();
+        enemy.StartCoroutine(enemy.Attack(enemy));
     }
 
     public override void Update()
