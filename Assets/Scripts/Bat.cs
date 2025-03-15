@@ -65,6 +65,9 @@ public class Bat : MonoBehaviour
         {
             player.speed = batSpeed;
             rb.useGravity = false;
+            
+            //stop vertical movement
+            rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z);
         }
         else
         {
