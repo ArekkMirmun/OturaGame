@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using Health;
 
 public class SpikesCircle : SkillBase
 {
@@ -14,6 +15,7 @@ public class SpikesCircle : SkillBase
     public bool isPreviewing = false;
     private bool canUseSkill = true; // Controla el cooldown
     private Vector3 targetPosition; // Guarda la posición donde se colocará la habilidad
+    public Player player;
 
     void Start()
     {
@@ -79,7 +81,8 @@ public class SpikesCircle : SkillBase
     {
         if (previewInstance)
         {
-            Instantiate(skillPrefab, targetPosition, Quaternion.identity);
+            GameObject go = Instantiate(skillPrefab, targetPosition, Quaternion.identity);
+            Destroy(go,3f);
             TogglePreview(false);
             StartCoroutine(CooldownCoroutine());
         }

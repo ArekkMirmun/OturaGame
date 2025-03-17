@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Collections;
 
 public class Player : MonoBehaviour
 {
@@ -177,9 +178,17 @@ public class Player : MonoBehaviour
         {
             animator.SetTrigger("Shoot");
         }else {
-            animator.SetTrigger("Attack");
             isAttacking = true;
+            animator.SetTrigger("Attack");
+            StartCoroutine(Attack());
+            
         }
+    }
+
+    public IEnumerator Attack()
+    {
+        yield return new WaitForSeconds(1f);
+        isAttacking = false;
     }
     
     // Check if the player is on the ground

@@ -358,6 +358,59 @@ MonoBehaviour:
   batObject: {fileID: 1589203034}
   batParticles: {fileID: 19800000, guid: 24b9091eef9f6704fac0f565bda98856, type: 3}
   batSpeed: 20
+--- !u!1 &98696614
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 98696615}
+  - component: {fileID: 98696616}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: NoEnemy
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &98696615
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 98696614}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 131956059}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &98696616
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 98696614}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.6382275, y: 3.7198102, z: 1.5542622}
+  m_Center: {x: -0.09722042, y: -0.013927102, z: 0.27713108}
 --- !u!1 &131956058
 GameObject:
   m_ObjectHideFlags: 0
@@ -369,6 +422,9 @@ GameObject:
   - component: {fileID: 131956059}
   - component: {fileID: 131956060}
   - component: {fileID: 131956061}
+  - component: {fileID: 131956063}
+  - component: {fileID: 131956064}
+  - component: {fileID: 131956065}
   m_Layer: 0
   m_Name: EnemyStatue
   m_TagString: Enemy
@@ -385,11 +441,12 @@ Transform:
   m_GameObject: {fileID: 131956058}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.17, y: 0.32, z: 22.64}
+  m_LocalPosition: {x: -13.17, y: -0.56, z: 22.64}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1171371544}
+  - {fileID: 98696615}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &131956060
@@ -428,6 +485,63 @@ NavMeshAgent:
   m_BaseOffset: 2.33
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!65 &131956063
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 131956058}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 3.4704685, z: 0.41604996}
+  m_Center: {x: 0, y: -0.015629768, z: -0.51307106}
+--- !u!114 &131956064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 131956058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f283a6c9dcfbe041844eb28970b2ea2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 10
+  dead: 0
+--- !u!95 &131956065
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 131956058}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b434baf801e10ab4c8e69f609e01d444, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &179801152
 GameObject:
   m_ObjectHideFlags: 0
@@ -539,6 +653,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 10
+  dead: 0
 --- !u!1001 &199122111
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1664,6 +1779,7 @@ MonoBehaviour:
   cooldown: 1
   playerCamera: {fileID: 749398743}
   isPreviewing: 0
+  player: {fileID: 60192751}
 --- !u!4 &948264068
 Transform:
   m_ObjectHideFlags: 0

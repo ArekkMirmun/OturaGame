@@ -99,7 +99,10 @@ public class EnemyController : MonoBehaviour
     }
 
     public void Die(){
-        anim.SetBool("die", true);
+        h.dead = true;
+        h.Die();
+        Agent.SetDestination(transform.position);
+        ChangeState(new DyingState(this));
         Destroy(gameObject, 2f);
     }
 

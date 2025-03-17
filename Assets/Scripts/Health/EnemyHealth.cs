@@ -22,11 +22,17 @@ public class EnemyHealth : MonoBehaviour, IDamageable
         {
             dead = true;
             Debug.Log("El enemigo ha muerto.");
+            if(gameObject.GetComponent<EnemyController>() != null){
             gameObject.GetComponent<EnemyController>().GetAnimator().SetTrigger("die");
             gameObject.GetComponent<EnemyController>().enabled = false;
             gameObject.GetComponent<BoxCollider>().enabled = false;
             Destroy(gameObject,2.5f);
-            // TODO Death logic and/or another event to delegate the efects of the death.
+            }else{
+            gameObject.GetComponent<StatueController>().enabled = false;
+            gameObject.GetComponent<BoxCollider>().enabled = false;
+            gameObject.GetComponent<Animator>().SetTrigger("die");
+            Destroy(gameObject,1.5f);
+            }
         }
 }
 }

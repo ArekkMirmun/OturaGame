@@ -11,6 +11,7 @@ public class DetectEnemy : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
+         if (other.CompareTag("Untagged")) return;
         if(p.isAttacking && other.CompareTag("Enemy")){
             other.gameObject.GetComponent<EnemyHealth>().TakeDamage(10);
         }else{return;}
