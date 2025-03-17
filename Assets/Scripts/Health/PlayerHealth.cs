@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Health
 {
@@ -15,6 +16,7 @@ namespace Health
         public float pasiveHealAmount = 1f;
         public float tickSeconds = 5f;
         private float lastTick;
+        public Slider healthSlider;
     
         /// <summary>
         /// Event that is triggered whenever the player's health changes.
@@ -42,7 +44,7 @@ namespace Health
             currentHealth = maxHealth;
             //currentHealth = maxHealth/2;
             OnChangePlayerHealth?.Invoke(currentHealth);
-        
+            healthSlider.value = currentHealth;
             lastTick = Time.time;
         }
 
@@ -60,6 +62,7 @@ namespace Health
             if (currentHealth <= 0)
             {
                 Debug.Log(name + " vida: " + currentHealth);
+                healthSlider.value = currentHealth;
                 Die(); 
             }
         }

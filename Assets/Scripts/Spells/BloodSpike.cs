@@ -5,7 +5,7 @@ using System.Collections;
 public class BloodSpike : SkillBase
 {
     [SerializeField] private GameObject[] spikes;
-    [SerializeField] private float speed = 10f;
+    [SerializeField] private float speed = 30f;
     [SerializeField] private float damage = 5f;
     [SerializeField] private float range = 5f;
     [SerializeField] private float cooldown = 1f;
@@ -60,7 +60,7 @@ public class BloodSpike : SkillBase
         if (other.CompareTag("Player")) return;
         if (other.CompareTag("Enemy"))
         {
-            other.GetComponent<IDamageable>()?.TakeDamage(damage);
+            other.GetComponent<EnemyHealth>().TakeDamage(10);
             Destroy(other.gameObject);
         }
 

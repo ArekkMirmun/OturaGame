@@ -28,6 +28,7 @@ public class Player : MonoBehaviour
     private Vector3 velocity;
     private float rotationY = 0f;
     public bool isAiming = false;
+    public bool isAttacking = false;
     
     
     private void Awake()
@@ -177,6 +178,7 @@ public class Player : MonoBehaviour
             animator.SetTrigger("Shoot");
         }else {
             animator.SetTrigger("Attack");
+            isAttacking = true;
         }
     }
     

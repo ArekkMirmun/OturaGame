@@ -15,9 +15,11 @@ public class EnemyController : MonoBehaviour
     private EnemyState currentState;
     [SerializeField] private Animator anim;
     bool detected = false;
+    EnemyHealth h;
 
     private void Start()
     {
+        h = GetComponent<EnemyHealth>();
         Agent = GetComponent<NavMeshAgent>();
         ChangeState(new PatrolState(this));
         anim = gameObject.transform.GetChild(0).GetComponent<Animator>();
@@ -76,12 +78,14 @@ public class EnemyController : MonoBehaviour
         anim.SetBool("attack",false);
         
         enemy.ChangeState(new ChaseState(enemy));
+        if(!h.dead){
 
         //Obtenemos la instancia del jugador
         PlayerHealth player = global::Player.Instance.GetComponent<PlayerHealth>();
         
         //Le restamos vida al jugador
         player.TakeDamage(15);
+        }
     }
 
     public void SetRandomDestination()
@@ -97,5 +101,9 @@ public class EnemyController : MonoBehaviour
     public void Die(){
         anim.SetBool("die", true);
         Destroy(gameObject, 2f);
+    }
+
+    public Animator GetAnimator(){
+        return anim;
     }
 }
