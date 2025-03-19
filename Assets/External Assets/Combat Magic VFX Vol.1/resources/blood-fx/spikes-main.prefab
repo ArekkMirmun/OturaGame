@@ -58195,6 +58195,7 @@ GameObject:
   - component: {fileID: 3155155587701986418}
   - component: {fileID: 247758740658044447}
   - component: {fileID: 7734319887850718472}
+  - component: {fileID: -2209737682513826941}
   m_Layer: 0
   m_Name: spikes-main
   m_TagString: Untagged
@@ -63059,8 +63060,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.087093, y: 3.7611468, z: 1.5039948}
-  m_Center: {x: 0.45963466, y: 0.6873383, z: 0.78844047}
+  m_Size: {x: 3.738609, y: 3.7611468, z: 2.8302069}
+  m_Center: {x: -0.366122, y: 0.6873383, z: 0.83848137}
 --- !u!114 &7734319887850718472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63074,6 +63075,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pinchoSuelo: 1
+--- !u!54 &-2209737682513826941
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2957549091228988056}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &2957637019647411006
 GameObject:
   m_ObjectHideFlags: 0

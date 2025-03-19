@@ -68,10 +68,10 @@ public class SpikesCircle : SkillBase
         if (Physics.Raycast(ray, out RaycastHit hit, 100f, groundLayer))
         {
             targetPosition = hit.point; // Guarda la posición donde impactó el rayo
-            print(previewInstance);
+            //print(previewInstance);
             if (previewInstance)
             {
-                print("Posición impactante: " + targetPosition);
+                //print("Posición impactante: " + targetPosition);
                 previewInstance.transform.position = targetPosition + Vector3.up * 0.1f; // Lo levanto un poco para evitar solaparse con el suelo
             }
         }

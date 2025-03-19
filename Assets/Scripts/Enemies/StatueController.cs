@@ -11,6 +11,7 @@ public class StatueController : MonoBehaviour
 
     void Start()
     {
+        player = GameObject.Find("----- PLAYER -----/Player").transform;
         agent = GetComponent<NavMeshAgent>();
         agent.speed = speed;
         mainCamera = Camera.main;

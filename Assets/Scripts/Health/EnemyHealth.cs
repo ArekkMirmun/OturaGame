@@ -31,7 +31,7 @@ public class EnemyHealth : MonoBehaviour, IDamageable
             gameObject.GetComponent<StatueController>().enabled = false;
             gameObject.GetComponent<BoxCollider>().enabled = false;
             gameObject.GetComponent<Animator>().SetTrigger("die");
-            Destroy(gameObject,1.5f);
+            Destroy(gameObject,1f);
             }
         }
 }

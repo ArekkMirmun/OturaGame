@@ -48,7 +48,7 @@ public class ChaseState : EnemyState
 
     public override void Update()
     {
-        enemy.Agent.SetDestination(enemy.Player.position);
+        enemy.Agent.SetDestination(enemy.GetPlayerTransform().position);
 
         if (!enemy.CanSeePlayer())
         {
@@ -98,7 +98,6 @@ public class DyingState : EnemyState
     public override void Enter()
     {
         enemy.Agent.isStopped = true;
-        enemy.Die();
     }
 
         public override void Update()

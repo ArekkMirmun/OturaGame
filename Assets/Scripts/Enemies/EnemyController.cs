@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
 {
-    public Transform Player;
+    private Transform Player;
     public NavMeshAgent Agent;
     public float ChaseSpeed = 4f;
     public float PatrolSpeed = 2f;
@@ -19,6 +19,7 @@ public class EnemyController : MonoBehaviour
 
     private void Start()
     {
+        Player = GameObject.Find("----- PLAYER -----/Player").transform;
         h = GetComponent<EnemyHealth>();
         Agent = GetComponent<NavMeshAgent>();
         ChangeState(new PatrolState(this));
@@ -98,15 +99,11 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    public void Die(){
-        h.dead = true;
-        h.Die();
-        Agent.SetDestination(transform.position);
-        ChangeState(new DyingState(this));
-        Destroy(gameObject, 2f);
-    }
-
     public Animator GetAnimator(){
         return anim;
+    }
+
+    public Transform GetPlayerTransform(){
+        return Player;
     }
 }
