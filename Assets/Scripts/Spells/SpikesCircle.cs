@@ -10,6 +10,7 @@ public class SpikesCircle : SkillBase
     [SerializeField] private LayerMask groundLayer; // Capa del suelo para colocar la previsualización
     [SerializeField] private float cooldown = 1f; // Cooldown de la habilidad
     [SerializeField] private Transform playerCamera; // Cámara del jugador
+    [SerializeField] private AudioSource soundEffect; // Sonido de la habilidad
 
     private GameObject previewInstance;
     public bool isPreviewing = false;
@@ -82,6 +83,7 @@ public class SpikesCircle : SkillBase
         if (previewInstance)
         {
             GameObject go = Instantiate(skillPrefab, targetPosition, Quaternion.identity);
+            soundEffect.Play();
             Destroy(go,3f);
             TogglePreview(false);
             StartCoroutine(CooldownCoroutine());

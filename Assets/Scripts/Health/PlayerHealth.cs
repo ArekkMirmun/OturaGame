@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Health
@@ -69,8 +70,8 @@ namespace Health
     
         public void Die()
         {
-            Debug.Log("El jugador ha muerto.");
-            // TODO Death logic and/or another event to delegate the efects of the death.
+           //Load menu scene
+           SceneManager.LoadScene("Menu");
         }
 
         /// <summary>

@@ -10,6 +10,7 @@ public class BloodSpike : SkillBase
     [SerializeField] private float range = 5f;
     [SerializeField] private float cooldown = 1f;
     [SerializeField] private Transform shootPoint;
+    [SerializeField] private AudioSource soundEffect; // Sonido de la habilidad
 
     public GameObject player;
     private bool canUseSkill = true;
@@ -29,6 +30,7 @@ public class BloodSpike : SkillBase
 
             GameObject instantiatedSpike = Instantiate(selectedSpike, shootPoint.position, Camera.main.transform.rotation);
             instantiatedSpike.SetActive(true);
+            soundEffect.Play();
 
             // Movimiento del pincho
             Rigidbody rb = instantiatedSpike.GetComponent<Rigidbody>();
