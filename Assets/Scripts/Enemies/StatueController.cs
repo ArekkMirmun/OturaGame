@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using Health;
 
 public class StatueController : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class StatueController : MonoBehaviour
 
     void Start()
     {
+        player = GameObject.Find("----- PLAYER -----/Player").transform;
         agent = GetComponent<NavMeshAgent>();
         agent.speed = speed;
         mainCamera = Camera.main;
@@ -27,6 +29,15 @@ public class StatueController : MonoBehaviour
         {
             agent.SetDestination(player.position); // Persigue al jugador solo si lo ve
         }
+
+        
+    }
+
+    void FixedUpdate(){
+        
+        if(Vector3.Distance(transform.position, player.position) < 2.5f){       
+             PlayerHealth player = global::Player.Instance.GetComponent<PlayerHealth>();
+        player.TakeDamage(5);}
     }
 
     bool IsVisible()

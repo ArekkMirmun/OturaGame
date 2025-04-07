@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Collections;
 
 public class Player : MonoBehaviour
 {
@@ -28,6 +29,7 @@ public class Player : MonoBehaviour
     private Vector3 velocity;
     private float rotationY = 0f;
     public bool isAiming = false;
+    public bool isAttacking = false;
     
     
     private void Awake()
@@ -176,8 +178,17 @@ public class Player : MonoBehaviour
         {
             animator.SetTrigger("Shoot");
         }else {
+            isAttacking = true;
             animator.SetTrigger("Attack");
+            StartCoroutine(Attack());
+            
         }
+    }
+
+    public IEnumerator Attack()
+    {
+        yield return new WaitForSeconds(1f);
+        isAttacking = false;
     }
     
     // Check if the player is on the ground

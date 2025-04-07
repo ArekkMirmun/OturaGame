@@ -5,11 +5,12 @@ using System.Collections;
 public class BloodSpike : SkillBase
 {
     [SerializeField] private GameObject[] spikes;
-    [SerializeField] private float speed = 10f;
+    [SerializeField] private float speed = 30f;
     [SerializeField] private float damage = 5f;
     [SerializeField] private float range = 5f;
     [SerializeField] private float cooldown = 1f;
     [SerializeField] private Transform shootPoint;
+    [SerializeField] private AudioSource soundEffect; // Sonido de la habilidad
 
     public GameObject player;
     private bool canUseSkill = true;
@@ -29,6 +30,7 @@ public class BloodSpike : SkillBase
 
             GameObject instantiatedSpike = Instantiate(selectedSpike, shootPoint.position, Camera.main.transform.rotation);
             instantiatedSpike.SetActive(true);
+            soundEffect.Play();
 
             // Movimiento del pincho
             Rigidbody rb = instantiatedSpike.GetComponent<Rigidbody>();
@@ -60,7 +62,7 @@ public class BloodSpike : SkillBase
         if (other.CompareTag("Player")) return;
         if (other.CompareTag("Enemy"))
         {
-            other.GetComponent<IDamageable>()?.TakeDamage(damage);
+            other.GetComponent<EnemyHealth>().TakeDamage(10);
             Destroy(other.gameObject);
         }
 

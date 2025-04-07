@@ -1,9 +1,11 @@
+using System.Collections;
+using Health;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
 {
-    public Transform Player;
+    private Transform Player;
     public NavMeshAgent Agent;
     public float ChaseSpeed = 4f;
     public float PatrolSpeed = 2f;
@@ -13,9 +15,12 @@ public class EnemyController : MonoBehaviour
     private EnemyState currentState;
     [SerializeField] private Animator anim;
     bool detected = false;
+    EnemyHealth h;
 
     private void Start()
     {
+        Player = GameObject.Find("----- PLAYER -----/Player").transform;
+        h = GetComponent<EnemyHealth>();
         Agent = GetComponent<NavMeshAgent>();
         ChangeState(new PatrolState(this));
         anim = gameObject.transform.GetChild(0).GetComponent<Animator>();
@@ -34,9 +39,21 @@ public class EnemyController : MonoBehaviour
         if (currentState is PatrolState)
         {
             detected = false;
+                    
+            //Mira al jugador
+            transform.LookAt(Player, Vector3.up);
+            //El modelo hijo tambien debe mirar al jugador
+            this.gameObject.transform.GetChild(0).LookAt(Player, Vector3.up);
+            
             anim.SetBool("detected", detected);
         }else if(currentState is ChaseState)
         {
+                    
+            //Mira al jugador
+            transform.LookAt(Player, Vector3.up);
+            //El modelo hijo tambien debe mirar al jugador
+            this.gameObject.transform.GetChild(0).LookAt(Player, Vector3.up);
+            
             anim.SetBool("attack",false);
              detected = true;
             anim.SetBool("detected", detected);
@@ -54,12 +71,22 @@ public class EnemyController : MonoBehaviour
         return Vector3.Distance(transform.position, Player.position) < AttackRange;
     }
 
-    public void Attack()
+    public IEnumerator Attack(EnemyController enemy)
     {
         anim.SetBool("attack",true);
         Debug.Log("Atacando al jugador...");
+        yield return new WaitForSeconds(1.5f);
+        anim.SetBool("attack",false);
         
-        // Aquí agregas animaciones y lógica de ataque.
+        enemy.ChangeState(new ChaseState(enemy));
+        if(!h.dead){
+
+        //Obtenemos la instancia del jugador
+        PlayerHealth player = global::Player.Instance.GetComponent<PlayerHealth>();
+        
+        //Le restamos vida al jugador
+        player.TakeDamage(15);
+        }
     }
 
     public void SetRandomDestination()
@@ -72,8 +99,11 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    public void Die(){
-        anim.SetBool("die", true);
-        Destroy(gameObject, 2f);
+    public Animator GetAnimator(){
+        return anim;
+    }
+
+    public Transform GetPlayerTransform(){
+        return Player;
     }
 }

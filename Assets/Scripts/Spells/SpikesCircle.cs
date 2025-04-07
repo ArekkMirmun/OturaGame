@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using Health;
 
 public class SpikesCircle : SkillBase
 {
@@ -9,11 +10,13 @@ public class SpikesCircle : SkillBase
     [SerializeField] private LayerMask groundLayer; // Capa del suelo para colocar la previsualización
     [SerializeField] private float cooldown = 1f; // Cooldown de la habilidad
     [SerializeField] private Transform playerCamera; // Cámara del jugador
+    [SerializeField] private AudioSource soundEffect; // Sonido de la habilidad
 
     private GameObject previewInstance;
     public bool isPreviewing = false;
     private bool canUseSkill = true; // Controla el cooldown
     private Vector3 targetPosition; // Guarda la posición donde se colocará la habilidad
+    public Player player;
 
     void Start()
     {
@@ -66,10 +69,10 @@ public class SpikesCircle : SkillBase
         if (Physics.Raycast(ray, out RaycastHit hit, 100f, groundLayer))
         {
             targetPosition = hit.point; // Guarda la posición donde impactó el rayo
-            print(previewInstance);
+            //print(previewInstance);
             if (previewInstance)
             {
-                print("Posición impactante: " + targetPosition);
+                //print("Posición impactante: " + targetPosition);
                 previewInstance.transform.position = targetPosition + Vector3.up * 0.1f; // Lo levanto un poco para evitar solaparse con el suelo
             }
         }
@@ -79,7 +82,9 @@ public class SpikesCircle : SkillBase
     {
         if (previewInstance)
         {
-            Instantiate(skillPrefab, targetPosition, Quaternion.identity);
+            GameObject go = Instantiate(skillPrefab, targetPosition, Quaternion.identity);
+            soundEffect.Play();
+            Destroy(go,3f);
             TogglePreview(false);
             StartCoroutine(CooldownCoroutine());
         }

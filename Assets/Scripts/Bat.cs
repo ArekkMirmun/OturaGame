@@ -21,6 +21,7 @@ public class Bat : MonoBehaviour
     
     [SerializeField]private ParticleSystem batParticles;
     [SerializeField]private float batSpeed = 20f;
+    [SerializeField]private AudioSource soundEffect;
 
     private float baseSpeed;
     private Rigidbody rb;
@@ -55,6 +56,7 @@ public class Bat : MonoBehaviour
     //Set the bat and player body when transforming
     private void SetBat()
     {
+        soundEffect.Play();
         playerCamera.enabled = !batActive;
         batCamera.enabled = batActive;
         batObject.SetActive(batActive);
