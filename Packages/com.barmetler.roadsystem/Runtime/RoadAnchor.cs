@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Barmetler.RoadSystem
@@ -6,8 +7,9 @@ namespace Barmetler.RoadSystem
     {
         [SerializeField]
         private Road road;
+
         [SerializeField, HideInInspector]
-        bool isStart;
+        private bool isStart;
 
         public Intersection Intersection => GetComponentInParent<Intersection>();
 
@@ -15,7 +17,7 @@ namespace Barmetler.RoadSystem
         {
             if (road == this.road) return;
             if (this.road && (this.isStart ? this.road.start : this.road.end) == this)
-                throw new System.Exception("Already connected to different road!");
+                throw new Exception("Already connected to different road!");
             this.road = road;
             this.isStart = isStart;
             if (isStart) road.start = this;

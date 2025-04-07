@@ -1,7 +1,7 @@
-﻿using UnityEngine;
-using UnityEditor;
+﻿using UnityEditor;
+using UnityEngine;
 
-namespace Barmetler.RoadSystem
+namespace Barmetler.RoadSystem.Settings
 {
     public class NewIntersectionWizard : ScriptableWizard
     {
@@ -11,13 +11,14 @@ namespace Barmetler.RoadSystem
             DisplayWizard<NewIntersectionWizard>("Create Intersection", "Create", "Apply");
         }
 
-        private GameObject intersection = null;
+        private GameObject _intersection;
 
         private void OnEnable()
         {
             minSize = new Vector2(350, 200);
-            helpString = "Selecte a prefab for the new intersection! You can also set that prefab in [Project Settings/MB RoadSystem]";
-            intersection = RoadSystemSettings.Instance.NewIntersectionPrefab;
+            helpString =
+                "Select a prefab for the new intersection! You can also set that prefab in [Project Settings/MB RoadSystem]";
+            _intersection = RoadSystemSettings.Instance.NewIntersectionPrefab;
         }
 
         protected override bool DrawWizardGUI()
@@ -26,7 +27,7 @@ namespace Barmetler.RoadSystem
 
             EditorGUILayout.BeginHorizontal();
             GUILayout.Label("Prefab", GUILayout.Width(EditorGUIUtility.labelWidth));
-            intersection = EditorGUILayout.ObjectField(intersection, typeof(GameObject), false) as GameObject;
+            _intersection = EditorGUILayout.ObjectField(_intersection, typeof(GameObject), false) as GameObject;
             EditorGUILayout.EndHorizontal();
 
             return EditorGUI.EndChangeCheck();
@@ -40,7 +41,7 @@ namespace Barmetler.RoadSystem
 
         private void OnWizardOtherButton()
         {
-            RoadSystemSettings.Instance.NewIntersectionPrefab = intersection;
+            RoadSystemSettings.Instance.NewIntersectionPrefab = _intersection;
         }
     }
 }

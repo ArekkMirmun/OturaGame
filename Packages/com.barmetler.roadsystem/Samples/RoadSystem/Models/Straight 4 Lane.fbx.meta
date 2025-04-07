@@ -104,7 +104,7 @@ AssetOrigin:
   serializedVersion: 1
   productId: 192818
   packageName: Road System
-  packageVersion: 2.0.1
-  assetPath: Packages/com.barmetler.roadsystem/Samples~/RoadSystem/Models/Straight
+  packageVersion: 2.1.0
+  assetPath: Packages/com.barmetler.roadsystem/Samples/RoadSystem/Models/Straight
     4 Lane.fbx
-  uploadId: 734011
+  uploadId: 736460

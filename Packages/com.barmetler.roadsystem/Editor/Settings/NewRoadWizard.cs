@@ -1,7 +1,7 @@
-using UnityEngine;
 using UnityEditor;
+using UnityEngine;
 
-namespace Barmetler.RoadSystem
+namespace Barmetler.RoadSystem.Settings
 {
     public class NewRoadWizard : ScriptableWizard
     {
@@ -11,13 +11,14 @@ namespace Barmetler.RoadSystem
             DisplayWizard<NewRoadWizard>("Create Road", "Create", "Apply");
         }
 
-        private GameObject road = null;
+        private GameObject _road;
 
         private void OnEnable()
         {
             minSize = new Vector2(350, 200);
-            helpString = "Selecte a prefab for the new road! You can also set that prefab in [Project Settings/MB RoadSystem]";
-            road = RoadSystemSettings.Instance.NewRoadPrefab;
+            helpString =
+                "Select a prefab for the new road! You can also set that prefab in [Project Settings/MB RoadSystem]";
+            _road = RoadSystemSettings.Instance.NewRoadPrefab;
         }
 
         protected override bool DrawWizardGUI()
@@ -26,7 +27,7 @@ namespace Barmetler.RoadSystem
 
             EditorGUILayout.BeginHorizontal();
             GUILayout.Label("Prefab", GUILayout.Width(EditorGUIUtility.labelWidth));
-            road = EditorGUILayout.ObjectField(road, typeof(GameObject), false) as GameObject;
+            _road = EditorGUILayout.ObjectField(_road, typeof(GameObject), false) as GameObject;
             EditorGUILayout.EndHorizontal();
 
             return EditorGUI.EndChangeCheck();
@@ -40,7 +41,7 @@ namespace Barmetler.RoadSystem
 
         private void OnWizardOtherButton()
         {
-            RoadSystemSettings.Instance.NewRoadPrefab = road;
+            RoadSystemSettings.Instance.NewRoadPrefab = _road;
         }
     }
 }

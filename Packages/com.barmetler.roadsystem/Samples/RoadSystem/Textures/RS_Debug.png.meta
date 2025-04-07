@@ -98,6 +98,6 @@ AssetOrigin:
   serializedVersion: 1
   productId: 192818
   packageName: Road System
-  packageVersion: 2.0.1
-  assetPath: Packages/com.barmetler.roadsystem/Samples~/RoadSystem/Textures/RS_Debug.png
-  uploadId: 734011
+  packageVersion: 2.1.0
+  assetPath: Packages/com.barmetler.roadsystem/Samples/RoadSystem/Textures/RS_Debug.png
+  uploadId: 736460

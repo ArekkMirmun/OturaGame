@@ -1,7 +1,7 @@
 using System.Linq;
 using UnityEngine;
 
-namespace Barmetler.RoadSystem
+namespace Barmetler.RoadSystem.Util
 {
     /// <summary>
     /// Updates a LineRenderer based on a RoadSystemNavigator
@@ -11,8 +11,10 @@ namespace Barmetler.RoadSystem
     {
         [SerializeField]
         private RoadSystemNavigator navigator;
+
         [SerializeField]
         private float Tolerance = 0.1f;
+
         [SerializeField]
         private float LineWidth = 2;
 

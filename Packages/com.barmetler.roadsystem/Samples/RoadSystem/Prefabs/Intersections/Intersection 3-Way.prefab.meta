@@ -9,7 +9,7 @@ AssetOrigin:
   serializedVersion: 1
   productId: 192818
   packageName: Road System
-  packageVersion: 2.0.1
-  assetPath: Packages/com.barmetler.roadsystem/Samples~/RoadSystem/Prefabs/Intersections/Intersection
+  packageVersion: 2.1.0
+  assetPath: Packages/com.barmetler.roadsystem/Samples/RoadSystem/Prefabs/Intersections/Intersection
     3-Way.prefab
-  uploadId: 734011
+  uploadId: 736460

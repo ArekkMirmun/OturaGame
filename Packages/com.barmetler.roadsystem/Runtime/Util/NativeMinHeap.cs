@@ -1,10 +1,11 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using Unity.Collections;
 using Unity.Collections.LowLevel.Unsafe;
 using Unity.Jobs;
 
-namespace Util
+namespace Barmetler.RoadSystem.Util
 {
     /// <summary>
     /// MinHeap, with support for updating values.
@@ -42,7 +43,7 @@ namespace Util
             get
             {
 #if ENABLE_UNITY_COLLECTIONS_CHECKS
-                if (Count == 0) throw new System.InvalidOperationException("Heap is empty");
+                if (Count == 0) throw new InvalidOperationException("Heap is empty");
 #endif
                 return _nodes[0].Index;
             }
@@ -53,9 +54,9 @@ namespace Util
         {
 #if ENABLE_UNITY_COLLECTIONS_CHECKS
             if (_indices[index] != -1)
-                throw new System.InvalidOperationException("Index already exists in heap");
+                throw new InvalidOperationException("Index already exists in heap");
             if (Count == _nodes.Length)
-                throw new System.InvalidOperationException("Heap is full");
+                throw new InvalidOperationException("Heap is full");
 #endif
             _nodes[Count] = new Node
             {
@@ -85,7 +86,7 @@ namespace Util
         {
 #if ENABLE_UNITY_COLLECTIONS_CHECKS
             if (_indices[index] == -1)
-                throw new System.InvalidOperationException("Index does not exist in heap");
+                throw new InvalidOperationException("Index does not exist in heap");
 #endif
             var i = _indices[index];
             var oldPriority = _nodes[i].Priority;
@@ -97,9 +98,9 @@ namespace Util
             if (priority < oldPriority) SiftUp(i);
             else SiftDown(i);
         }
-        
+
         public bool Contains(int index) => _indices[index] != -1;
-        
+
         [WriteAccessRequired]
         public void InsertOrUpdate(int index, float priority)
         {
@@ -135,7 +136,7 @@ namespace Util
         private static void CheckCopyLengths(int sourceLength, int destinationLength)
         {
             if (sourceLength != destinationLength)
-                throw new System.InvalidOperationException("source and destination length must be the same");
+                throw new InvalidOperationException("source and destination length must be the same");
         }
 
         [WriteAccessRequired]
